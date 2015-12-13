@@ -18,7 +18,7 @@ function [A, P, G] = read_dataset()
     [A, C] = xlsread(filename, sheet, xlRange);
     
     % tranpose for clustering
-    %A = A';
+    A = A';
     
     P = C(1,:);
     P = P(2:end);

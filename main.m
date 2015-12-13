@@ -21,16 +21,16 @@ show_figure_and_test_result = false;
 
 [centroid_position] = count_cluster(k, cluster_set);
 
-[gene] = search_resistance_gene(cluster_set, centroid_position, A, G);
+n = 5;
 
-gene = gene
+[genes] = search_resistance_genes(cluster_set, centroid_position, A, G, n);
 
-detail = strcat('<a href="http://www.genecards.org/cgi-bin/carddisp.pl?gene=', gene);
-
-detail = strcat(detail, '">http://www.genecards.org/cgi-bin/carddisp.pl?gene=');
-
-detail = strcat(detail, gene);
-
-detail = strcat(detail, '</a>');
-
-link = detail
+if ischar(genes)
+    gene = genes
+    link = get_link(gene)
+else
+    for iter = 1 : n
+        gene = genes{iter}
+        link = get_link(gene)
+    end
+end
