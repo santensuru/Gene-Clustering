@@ -17,3 +17,8 @@ open main.m and run it using Matlab R2015a
 % Create: Matlab R2015a
 %%
 ```
+
+## Gene's detail
+```
+http://www.genecards.org/cgi-bin/carddisp.pl?gene=[gene's name here ...]
+```
