@@ -39,6 +39,5 @@ function [genes] = search_resistance_genes(cluster_set, centroid_position, A, G,
         for iter = 1 : 5
             genes = [genes cellstr(G{IX(iter),1})];
         end
-        gene = genes;
     end
 end
