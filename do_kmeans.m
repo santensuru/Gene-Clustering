@@ -1,3 +1,12 @@
+%%
+% Author: Djuned Fernando Djusdek
+%         5112 100 071
+%         Informatics - ITS
+%         12/13/2015
+%
+% Create: Matlab R2015a
+%%
+
 function [cluster_set, centroid] = do_kmeans(k, show_figure, A, P)
 
     % clustering using k-means (k = 5)

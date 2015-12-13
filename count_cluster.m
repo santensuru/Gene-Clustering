@@ -1,3 +1,12 @@
+%%
+% Author: Djuned Fernando Djusdek
+%         5112 100 071
+%         Informatics - ITS
+%         12/13/2015
+%
+% Create: Matlab R2015a
+%%
+
 function [centroid_position] =  count_cluster(k, cluster_set)
 
     a = zeros(k,1);
