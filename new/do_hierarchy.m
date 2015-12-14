@@ -16,7 +16,7 @@ function [cluster_set] = do_hierarchy(k, show_figure, A, G)
     % Linkages
     Z = linkage(Y, 'average');
     
-    sz = size(Z)
+    %sz = size(Z)
     
     if show_figure == true
         % Verify Dissimilarity
