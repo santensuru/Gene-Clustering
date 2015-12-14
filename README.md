@@ -22,3 +22,14 @@ open main.m and run it using Matlab R2015a
 ```
 http://www.genecards.org/cgi-bin/carddisp.pl?gene=[gene's name here ...]
 ```
+
+## Update
+### Old
+```
+contain all old implementation, different point of view (just get the dominan gene(s))
+```
+
+### New
+```
+cluster all genes, and show the feature
+```
