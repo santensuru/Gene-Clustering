@@ -10,7 +10,7 @@
 clear;
 close all;
 
-k = 5;
+k = 10;
 show_figure_and_test_result = false;
 
 [A, P, G] = read_dataset();
@@ -19,8 +19,26 @@ show_figure_and_test_result = false;
 
 [Fn] = read_genes();
 
-[gene_ontology] = get_gene_ontology(cluster_set, Fn);
+% most only
+%[centroid_position] = count_cluster(k, cluster_set);
 
-gene_ontology = gene_ontology{1}
+%[gene_ontology] = get_gene_ontology(cluster_set, Fn, centroid_position);
 
-link = get_link(gene_ontology)
+%gene_ontology = gene_ontology{1}
+
+%link = get_link(gene_ontology)
+
+% all cluster
+for iter = 1 : k
+    cluster = iter;
+    
+    [gene_ontology] = get_gene_ontology(cluster_set, Fn, iter);
+
+    gene_ontology = gene_ontology{1};
+    
+    link = get_link(gene_ontology);
+    
+    detail = {cluster gene_ontology}
+    
+    disp(link);
+end

@@ -7,7 +7,7 @@
 % Create: Matlab R2015a
 %%
 
-function [gene_ontology] = get_gene_ontology(cluster_set, Fn)
+function [gene_ontology] = get_gene_ontology(cluster_set, Fn, centroid_position)
     
     go = [];
     go = [go 'null'];
@@ -15,7 +15,7 @@ function [gene_ontology] = get_gene_ontology(cluster_set, Fn)
     c = [];
     
     for iter = 1 : length(cluster_set)
-        if strcmp(Fn{1,iter}, 'null') || strcmp(Fn{1,iter}, '')
+        if strcmp(Fn{1,iter}, 'null') || strcmp(Fn{1,iter}, '') || cluster_set{iter,2} ~= centroid_position
             % do nothing
         else
             cur = strsplit(Fn{1,iter}, ';');
