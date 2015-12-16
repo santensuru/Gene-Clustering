@@ -2,7 +2,7 @@
 % Author: Djuned Fernando Djusdek
 %         5112 100 071
 %         Informatics - ITS
-%         12/15/2015
+%         12/16/2015
 %
 % Create: Matlab R2015a
 %%
@@ -18,6 +18,9 @@ show_figure_and_test_result = false;
 [cluster_set] = do_hierarchy(k, show_figure_and_test_result, A, G);
 
 [Fn] = read_genes();
+
+% save to file (gene_ontology(s))
+save_go(Fn);
 
 % most only
 %[centroid_position] = count_cluster(k, cluster_set);
