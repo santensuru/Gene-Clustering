@@ -11,7 +11,7 @@ ws = wb.get_sheet_by_name(wb2[0])
 iter = 1
 
 while True:
-    if iter == 5:
+    if iter == 6:
         wb.save('Gene_ontology2.xlsx')
         break
     
@@ -38,6 +38,17 @@ while True:
         
         raw = soup.find("dl", {"class": "amigo-detail-info"})
 
+        start = str(raw).find("<dt>Name</dt>")
+        end = str(raw).find("<dt>Ontology</dt>")
+        contain = str(raw)[start:end]
+
+        start = contain.find("<dd>") + 4
+        end = contain.find("</dd>")
+
+        name = contain[start:end]
+        
+        ws.cell(row = iter, column = 2).value = name
+
         start = str(raw).find("<dt>Ontology</dt>")
         end = str(raw).find("<dt>Synonyms</dt>")
         contain = str(raw)[start:end]
@@ -47,7 +58,7 @@ while True:
 
         ontology = contain[start:end]
         
-        ws.cell(row = iter, column = 2).value = ontology
+        ws.cell(row = iter, column = 3).value = ontology
             
     except urllib2.HTTPError, e:
         print e.fp.read()
