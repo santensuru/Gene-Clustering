@@ -11,7 +11,7 @@ ws = wb.get_sheet_by_name(wb2[0])
 iter = 1
 
 while True:
-    if iter == 6:
+    if iter == 1003:
         wb.save('Gene_ontology2.xlsx')
         break
     
@@ -25,7 +25,7 @@ while True:
        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
        'Accept-Language': 'en-US,en;q=0.5',
        'Accept-Encoding': 'gzip, deflate',
-       'Cookie': '_ga=GA1.2.1703632139.1450109154; __utma=243921171.1703632139.1450109154.1450254477.1450254477.1; __utmz=243921171.1450254477.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided); _gat=1',
+       'Cookie': '_ga=GA1.2.1703632139.1450109154; __utma=243921171.1703632139.1450109154.1450254477.1450254477.1; __utmz=243921171.1450254477.1.1.utmcsr=google|utmccn=(organic)|utmcmd=organic|utmctr=(not%20provided)',
        'Connection': 'keep-alive',
        'Cache-Control': 'max-age=0'}
     
@@ -59,6 +59,23 @@ while True:
         ontology = contain[start:end]
         
         ws.cell(row = iter, column = 3).value = ontology
+
+        start = str(raw).find("<dt>Synonyms</dt>")
+        end = str(raw).find("<dt>Definition</dt>")
+        contain = str(raw)[start:end]
+
+        start = contain.find("<dd>") + 4
+        end = contain.find("</dd>")
+
+        if contain.find("<dd class=\"syn-collapsible\" id=\"syn-collapse-syn\">") > -1:
+            start = contain.find("<dd class=\"syn-collapsible\" id=\"syn-collapse-syn\">") + 50
+            end = contain.find("</dd>", start)
+        
+        synonym = contain[start:end].replace(', ',';')
+        #print synonym
+        #print contain
+        
+        ws.cell(row = iter, column = 4).value = synonym
             
     except urllib2.HTTPError, e:
         print e.fp.read()
