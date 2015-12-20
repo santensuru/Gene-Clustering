@@ -11,9 +11,14 @@ clear;
 close all;
 
 k = 5;
-show_figure_and_test_result = false;
+show_figure_and_test_result = true;
 
 [A, P, G] = read_dataset();
+
+% HeatMap of raw data
+if show_figure_and_test_result == true
+    HeatMap(A);
+end
 
 [cluster_set] = do_hierarchy(k, show_figure_and_test_result, A, G);
 
@@ -22,12 +27,11 @@ show_figure_and_test_result = false;
 % save to file (gene_ontology(s))
 %save_go(Fn);
 
-[o_Fn] = read_ontology();
-
-[go_Fn] = get_ontology_detail(G, Fn, o_Fn);
-
+% Used for created dictionary <gene's name, [function / ontology]>
+%[o_Fn] = read_ontology();
+%[go_Fn] = get_ontology_detail(G, Fn, o_Fn);
 % save to file (gene_ontology(s)'s function)
-save_go_Fn(go_Fn);
+%save_go_Fn(go_Fn);
 
 % most only
 %[centroid_position] = count_cluster(k, cluster_set);
