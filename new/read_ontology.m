@@ -7,17 +7,17 @@
 % Create: Matlab R2015a
 %%
 
-function [Fn] = read_genes()
+function [o_Fn] = read_ontology()
 
     % define file and configuration
-    filename = '../Gene_function2.xlsx';
+    filename = '../Gene_ontology2.xlsx';
     sheet = 1;
     xlRange = 'A1:B1213';
 
     % read the file
     [A, C] = xlsread(filename, sheet, xlRange);
     
-    Fn = C(:,2);
-    Fn = Fn';
+    o_Fn = C;
+    o_Fn = o_Fn';
     
 end

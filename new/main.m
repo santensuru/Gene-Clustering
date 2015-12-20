@@ -2,7 +2,7 @@
 % Author: Djuned Fernando Djusdek
 %         5112 100 071
 %         Informatics - ITS
-%         12/16/2015
+%         12/20/2015
 %
 % Create: Matlab R2015a
 %%
@@ -10,7 +10,7 @@
 clear;
 close all;
 
-k = 10;
+k = 5;
 show_figure_and_test_result = false;
 
 [A, P, G] = read_dataset();
@@ -20,7 +20,14 @@ show_figure_and_test_result = false;
 [Fn] = read_genes();
 
 % save to file (gene_ontology(s))
-save_go(Fn);
+%save_go(Fn);
+
+[o_Fn] = read_ontology();
+
+[go_Fn] = get_ontology_detail(G, Fn, o_Fn);
+
+% save to file (gene_ontology(s)'s function)
+save_go_Fn(go_Fn);
 
 % most only
 %[centroid_position] = count_cluster(k, cluster_set);
