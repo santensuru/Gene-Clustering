@@ -63,7 +63,7 @@ for iter = 1 : k
     filename = strcat('../Gene_ontology_function_cs-',num2str(iter));
     filename = strcat(filename, '.xlsx');
     filename=filename
-    xlswrite(filename,go_Fn);
+    xlswrite(filename,go_Fn');
 
     gene_ontology = gene_ontology{1};
     
