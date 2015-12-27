@@ -12,6 +12,7 @@ close all;
 
 k = 5;
 show_figure_and_test_result = true;
+is_to_file = false;
 
 [A, P, G] = read_dataset();
 
@@ -28,15 +29,16 @@ end
 %save_go(Fn);
 
 % Used for created dictionary <gene's name, [function / ontology]>
-%[o_Fn] = read_ontology();
+[o_Fn] = read_ontology();
 %[go_Fn] = get_ontology_detail(G, Fn, o_Fn);
 % save to file (gene_ontology(s)'s function)
 %save_go_Fn(go_Fn);
 
 % most only
 %[centroid_position] = count_cluster(k, cluster_set);
-
 %[gene_ontology] = get_gene_ontology(cluster_set, Fn, centroid_position);
+
+%[chd] = get_heatmap(G, centroid_position, o_Fn, cluster_set, Fn, is_to_file);
 
 %gene_ontology = gene_ontology{1}
 
@@ -47,6 +49,12 @@ for iter = 1 : k
     cluster = iter;
     
     [gene_ontology] = get_gene_ontology(cluster_set, Fn, iter);
+    
+    [chd] = get_heatmap(G, iter, o_Fn, cluster_set, Fn, is_to_file);
+    
+    if show_figure_and_test_result == true && is_to_file == false
+        HeatMap(cell2mat(chd));
+    end
 
     gene_ontology = gene_ontology{1};
     
