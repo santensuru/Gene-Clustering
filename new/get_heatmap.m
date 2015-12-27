@@ -49,7 +49,7 @@ function [cluster_heatmap_data] = get_heatmap(G, centroid_position, o_Fn, cluste
         end
         
         cluster_heatmap_data = chd;
-        filename = strcat('../Gene_ontology_function_cs-',cluster_set);
+        filename = strcat('../Gene_ontology_function_csd-',num2str(centroid_position));
         filename = strcat(filename, '.xlsx');
         xlswrite(filename,cluster_heatmap_data);
         

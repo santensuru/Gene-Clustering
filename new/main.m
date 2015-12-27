@@ -53,8 +53,17 @@ for iter = 1 : k
     [chd] = get_heatmap(G, iter, o_Fn, cluster_set, Fn, is_to_file);
     
     if show_figure_and_test_result == true && is_to_file == false
-        HeatMap(cell2mat(chd));
+        L = HeatMap(cell2mat(chd));
+        addTitle(L, strcat('cluster-',num2str(iter)));
     end
+    
+    % Used for created dictionary <gene's name, [function / ontology]>
+    [go_Fn] = get_ontology_detail_cluster(G, Fn, o_Fn, cluster_set, iter);
+    % save to file (gene_ontology(s)'s function)
+    filename = strcat('../Gene_ontology_function_cs-',num2str(iter));
+    filename = strcat(filename, '.xlsx');
+    filename=filename
+    xlswrite(filename,go_Fn);
 
     gene_ontology = gene_ontology{1};
     
